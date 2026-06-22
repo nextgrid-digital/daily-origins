@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Footer from "components/layout/footer";
 import Collections from "components/layout/search/collections";
 import FilterList from "components/layout/search/filter";
-import { pageInset } from "components/ui";
+import { pagePadding } from "components/ui";
 import { sorting } from "lib/constants";
 import { Suspense } from "react";
 import ChildrenWrapper from "./children-wrapper";
@@ -15,7 +15,7 @@ export default function SearchLayout({
   return (
     <>
       <section className="w-full border-b border-line bg-ivory">
-        <div className={clsx("w-full py-16", pageInset)}>
+        <div className={clsx("w-full py-16", pagePadding)}>
           <span className="text-xs uppercase tracking-[0.28em] text-ink-soft">
             The Collection
           </span>
@@ -29,14 +29,13 @@ export default function SearchLayout({
         </div>
       </section>
 
-      <div className="flex w-full flex-col gap-0 pt-0 pb-16 text-ink md:flex-row md:pb-20">
-        <div
-          className={clsx(
-            "order-first w-full flex-none md:max-w-[180px]",
-            pageInset,
-            "md:pt-12"
-          )}
-        >
+      <div
+        className={clsx(
+          "flex w-full flex-col gap-10 pt-12 pb-16 text-ink md:flex-row md:pb-20",
+          pagePadding
+        )}
+      >
+        <div className="order-first w-full flex-none md:max-w-[180px]">
           <div className="sticky top-20 self-start">
             <Collections />
           </div>
@@ -46,13 +45,7 @@ export default function SearchLayout({
             <ChildrenWrapper>{children}</ChildrenWrapper>
           </Suspense>
         </div>
-        <div
-          className={clsx(
-            "order-none flex-none md:order-last md:w-[160px]",
-            pageInset,
-            "md:pt-12"
-          )}
-        >
+        <div className="order-none flex-none md:order-last md:w-[160px]">
           <div className="sticky top-20 self-start">
             <FilterList list={sorting} title="Sort by" />
           </div>

@@ -1,9 +1,10 @@
+import clsx from "clsx";
 import { GridTileImage } from "components/grid/tile";
 import Footer from "components/layout/footer";
 import { Gallery } from "components/product/gallery";
 import { ProductDescription } from "components/product/product-description";
 import { RitualDetails } from "components/product/ritual-details";
-import { Container } from "components/ui";
+import { Container, pagePadding } from "components/ui";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
 import { getProduct, getProductRecommendations } from "lib/shopify";
 import type { Image } from "lib/shopify/types";
@@ -82,7 +83,7 @@ export default async function ProductPage(props: {
           __html: JSON.stringify(productJsonLd),
         }}
       />
-      <Container className="pb-12 md:pb-16">
+      <div className="pb-12 md:pb-16">
         <div className="flex flex-col lg:flex-row lg:gap-0">
           <div className="w-full lg:sticky lg:top-[73px] lg:h-[calc(100dvh-73px)] lg:basis-3/5">
             <Suspense
@@ -99,13 +100,13 @@ export default async function ProductPage(props: {
             </Suspense>
           </div>
 
-          <div className="basis-full px-6 lg:basis-2/5 lg:px-12 lg:py-10 xl:px-16">
+          <div className={clsx("basis-full lg:basis-2/5 lg:py-10", pagePadding)}>
             <Suspense fallback={null}>
               <ProductDescription product={product} />
             </Suspense>
           </div>
         </div>
-      </Container>
+      </div>
 
       <RitualDetails handle={product.handle} />
 
