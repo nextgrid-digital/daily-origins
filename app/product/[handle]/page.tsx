@@ -82,12 +82,12 @@ export default async function ProductPage(props: {
           __html: JSON.stringify(productJsonLd),
         }}
       />
-      <Container className="py-12 md:py-16">
-        <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-          <div className="h-full w-full basis-full lg:basis-3/5">
+      <Container className="pb-12 md:pb-16">
+        <div className="flex flex-col lg:flex-row lg:gap-0">
+          <div className="w-full lg:sticky lg:top-[73px] lg:h-[calc(100dvh-73px)] lg:basis-3/5">
             <Suspense
               fallback={
-                <div className="relative aspect-square h-full max-h-[600px] w-full overflow-hidden rounded-none" />
+                <div className="relative h-full min-h-[70dvh] w-full overflow-hidden bg-stone lg:min-h-0" />
               }
             >
               <Gallery
@@ -99,7 +99,7 @@ export default async function ProductPage(props: {
             </Suspense>
           </div>
 
-          <div className="basis-full lg:basis-2/5 lg:pt-6">
+          <div className="basis-full px-6 lg:basis-2/5 lg:px-12 lg:py-10 xl:px-16">
             <Suspense fallback={null}>
               <ProductDescription product={product} />
             </Suspense>

@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Footer from "components/layout/footer";
 import Collections from "components/layout/search/collections";
 import FilterList from "components/layout/search/filter";
-import { pagePadding } from "components/ui";
+import { pageInset } from "components/ui";
 import { sorting } from "lib/constants";
 import { Suspense } from "react";
 import ChildrenWrapper from "./children-wrapper";
@@ -15,7 +15,7 @@ export default function SearchLayout({
   return (
     <>
       <section className="w-full border-b border-line bg-ivory">
-        <div className={clsx("w-full py-16", pagePadding)}>
+        <div className={clsx("w-full py-16", pageInset)}>
           <span className="text-xs uppercase tracking-[0.28em] text-ink-soft">
             The Collection
           </span>
@@ -29,23 +29,30 @@ export default function SearchLayout({
         </div>
       </section>
 
-      <div
-        className={clsx(
-          "flex w-full flex-col gap-10 pt-12 pb-0 text-ink md:flex-row",
-          pagePadding
-        )}
-      >
-        <div className="order-first w-full flex-none md:max-w-[180px]">
+      <div className="flex w-full flex-col gap-0 pt-0 pb-16 text-ink md:flex-row md:pb-20">
+        <div
+          className={clsx(
+            "order-first w-full flex-none md:max-w-[180px]",
+            pageInset,
+            "md:pt-12"
+          )}
+        >
           <div className="sticky top-20 self-start">
             <Collections />
           </div>
         </div>
-        <div className="order-last w-full md:order-none">
+        <div className="order-last w-full min-w-0 md:order-none">
           <Suspense fallback={null}>
             <ChildrenWrapper>{children}</ChildrenWrapper>
           </Suspense>
         </div>
-        <div className="order-none flex-none md:order-last md:w-[160px]">
+        <div
+          className={clsx(
+            "order-none flex-none md:order-last md:w-[160px]",
+            pageInset,
+            "md:pt-12"
+          )}
+        >
           <div className="sticky top-20 self-start">
             <FilterList list={sorting} title="Sort by" />
           </div>

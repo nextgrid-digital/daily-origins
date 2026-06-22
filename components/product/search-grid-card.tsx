@@ -20,24 +20,24 @@ export function SearchGridCard({
   const price = oneTimePrice(product);
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-none border border-line bg-white">
+    <article className="group relative flex h-full flex-col overflow-hidden bg-white">
       <Link
         href={`/product/${product.handle}`}
         prefetch={true}
-        className="relative block aspect-[4/5] overflow-hidden bg-stone"
+        className="relative block aspect-[4/5] w-full overflow-hidden"
       >
         <Image
           src={product.featuredImage?.url}
           alt={product.featuredImage?.altText || product.title}
           fill
           priority={priority}
-          sizes="(min-width: 1024px) 30vw, (min-width: 768px) 33vw, 100vw"
-          className="object-cover transition duration-500 hover:scale-105"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
+          className="object-cover transition duration-500 group-hover:scale-[1.02]"
         />
       </Link>
 
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <div className="flex items-start justify-between gap-2">
+      <div className="flex flex-col gap-2 border-t border-line px-0 py-2">
+        <div className="flex items-start justify-between gap-2 px-2">
           <Link
             href={`/product/${product.handle}`}
             prefetch={true}
@@ -52,7 +52,7 @@ export function SearchGridCard({
             currencyCodeClassName="hidden"
           />
         </div>
-        <QuickAddToCart product={product} className="mt-auto" />
+        <QuickAddToCart product={product} className="px-2" />
       </div>
     </article>
   );

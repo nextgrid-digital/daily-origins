@@ -7,8 +7,9 @@ import { ReactNode } from "react";
 // brand pages to keep spacing, typography, and color usage consistent.
 // ---------------------------------------------------------------------------
 
-// Shared horizontal padding for every page, section, nav, and footer.
-export const pagePadding = "px-6 lg:px-12 xl:px-16";
+// Full-bleed layout — no horizontal gutters. Use pageInset on nav/footer/text-only rows.
+export const pagePadding = "px-0";
+export const pageInset = "px-4 lg:px-6";
 
 export function Container({
   children,

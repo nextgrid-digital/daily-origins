@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { ProductCard } from "components/product-card";
-import { Container } from "components/ui";
+import { Container, pageInset } from "components/ui";
 import { FAMILY_META, FAMILY_ORDER, type Family } from "lib/data/catalog";
 import type { Product } from "lib/shopify/types";
 import { useState } from "react";
@@ -26,7 +26,7 @@ export function ProductDirectory({ products }: { products: Product[] }) {
         <div
           className={clsx(
             "sticky top-[73px] z-20 mb-8 border-b border-line bg-white/85 py-4 backdrop-blur-md",
-            "-mx-6 px-6 lg:-mx-12 lg:px-12 xl:-mx-16 xl:px-16"
+            pageInset
           )}
         >
           <div className="flex flex-wrap items-center gap-2">

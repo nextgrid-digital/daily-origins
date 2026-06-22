@@ -32,6 +32,18 @@ function img(
   return { url, altText: `${title} — ${eyebrow}`, width: 1200, height: 1500 };
 }
 
+function productPhoto(url: string, title: string, ingredient: string): Image {
+  return { url, altText: `${title} — ${ingredient}`, width: 1200, height: 1500 };
+}
+
+const PRODUCT_PHOTOS: Partial<Record<string, string>> = {
+  "daily-energy": "/images/products/black-ginger.png",
+  "daily-focus": "/images/products/brahmi.png",
+  "daily-recovery": "/images/products/turmeric-ginger.png",
+  "daily-sleep": "/images/products/ashwagandha.png",
+  "daily-immunity": "/images/products/daily-immunity.png",
+};
+
 function money(amount: number) {
   return { amount: amount.toFixed(2), currencyCode: CURRENCY };
 }
@@ -310,19 +322,21 @@ function buildVariants(seed: Seed): {
 function buildProduct(seed: Seed, index: number): Product {
   const meta = FAMILY_META[seed.family];
   const { options, variants } = buildVariants(seed);
-  const featuredImage = img(
-    seed.title,
-    meta.ingredient,
-    seed.family,
-    seed.shape,
-    index + 1
-  );
+  const photoUrl = PRODUCT_PHOTOS[seed.handle];
+  const featuredImage = photoUrl
+    ? productPhoto(photoUrl, seed.title, meta.ingredient)
+    : img(seed.title, meta.ingredient, seed.family, seed.shape, index + 1);
   const altShape: PlaceholderShape = seed.shape === "bottle" ? "jar" : "bottle";
-  const images: Image[] = [
-    featuredImage,
-    img(seed.title, meta.label, seed.family, altShape, index + 30),
-    img(meta.ingredient, "Origin", seed.family, "scene", index + 60),
-  ];
+  const images: Image[] = photoUrl
+    ? [
+        featuredImage,
+        img(meta.ingredient, "Origin", seed.family, "scene", index + 60),
+      ]
+    : [
+        featuredImage,
+        img(seed.title, meta.label, seed.family, altShape, index + 30),
+        img(meta.ingredient, "Origin", seed.family, "scene", index + 60),
+      ];
 
   const descriptionHtml = `<p>${seed.description}</p><ul>${seed.highlights
     .map((h) => `<li>${h}</li>`)
