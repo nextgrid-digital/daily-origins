@@ -60,7 +60,7 @@ export default function WholesalePage() {
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {BENEFITS.map((b, i) => (
               <Reveal key={b.title} delay={i * 80}>
-                <div className="h-full rounded-3xl border border-line bg-white p-8">
+                <div className="h-full rounded-none border border-line bg-white p-8">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 text-ink">
                     <b.icon className="h-6 w-6" />
                   </span>

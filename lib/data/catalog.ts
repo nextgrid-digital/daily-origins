@@ -424,11 +424,6 @@ export function getCollectionImage(handle: string): Image {
 
 export const HEADER_MENU: Menu[] = [
   { title: "Shop", path: "/search" },
-  { title: "Energy", path: "/search/energy" },
-  { title: "Focus", path: "/search/focus" },
-  { title: "Recovery", path: "/search/recovery" },
-  { title: "Sleep", path: "/search/sleep" },
-  { title: "Immunity", path: "/search/immunity" },
   { title: "Ingredients", path: "/ingredients" },
   { title: "About", path: "/about" },
 ];

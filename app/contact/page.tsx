@@ -52,7 +52,7 @@ export default function ContactPage() {
             {CHANNELS.map((c) => (
               <div
                 key={c.title}
-                className="rounded-3xl border border-line bg-white p-8"
+                className="rounded-none border border-line bg-white p-8"
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 text-ink">
                   <c.icon className="h-6 w-6" />

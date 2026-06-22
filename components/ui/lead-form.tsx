@@ -26,7 +26,7 @@ export function LeadForm({
 
   if (submitted) {
     return (
-      <div className="rounded-3xl border border-line bg-stone/40 p-10 text-center">
+      <div className="rounded-none border border-line bg-stone/40 p-10 text-center">
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-ink text-white">
           ✓
         </div>

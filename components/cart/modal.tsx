@@ -132,7 +132,7 @@ export default function CartModal() {
                                 />
                               </div>
                               <div className="flex flex-row">
-                                <div className="relative h-16 w-16 overflow-hidden rounded-xl border border-sand-dark bg-sand">
+                                <div className="relative h-16 w-16 overflow-hidden rounded-none border border-sand-dark bg-sand">
                                   <Image
                                     className="h-full w-full object-cover"
                                     width={64}

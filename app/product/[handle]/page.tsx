@@ -87,7 +87,7 @@ export default async function ProductPage(props: {
           <div className="h-full w-full basis-full lg:basis-3/5">
             <Suspense
               fallback={
-                <div className="relative aspect-square h-full max-h-[600px] w-full overflow-hidden rounded-[2rem]" />
+                <div className="relative aspect-square h-full max-h-[600px] w-full overflow-hidden rounded-none" />
               }
             >
               <Gallery

@@ -7,6 +7,9 @@ import { ReactNode } from "react";
 // brand pages to keep spacing, typography, and color usage consistent.
 // ---------------------------------------------------------------------------
 
+// Shared horizontal padding for every page, section, nav, and footer.
+export const pagePadding = "px-6 lg:px-12 xl:px-16";
+
 export function Container({
   children,
   className,
@@ -15,9 +18,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={clsx("mx-auto w-full max-w-7xl px-6 lg:px-10", className)}>
-      {children}
-    </div>
+    <div className={clsx("w-full", pagePadding, className)}>{children}</div>
   );
 }
 
@@ -85,7 +86,7 @@ export function SectionHeading({
   return (
     <div
       className={clsx(
-        align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl",
+        align === "center" ? "mx-auto text-center" : "",
         className
       )}
     >

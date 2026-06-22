@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import clsx from "clsx";
+import { pagePadding } from "components/ui";
 import { NewsletterForm } from "components/ui/newsletter-form";
 
 const { SITE_NAME } = process.env;
@@ -31,7 +33,7 @@ export default async function Footer() {
 
   return (
     <footer className="border-t border-line bg-ivory-dim text-ink">
-      <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10">
+      <div className={clsx("w-full py-16", pagePadding)}>
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
             <Link
@@ -59,7 +61,12 @@ export default async function Footer() {
       </div>
 
       <div className="border-t border-line">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-2 px-6 py-6 text-xs text-ink-soft md:flex-row md:justify-between lg:px-10">
+        <div
+          className={clsx(
+            "flex w-full flex-col items-center gap-2 py-6 text-xs text-ink-soft md:flex-row md:justify-between",
+            pagePadding
+          )}
+        >
           <p>
             &copy; {currentYear} {name}. All rights reserved.
           </p>

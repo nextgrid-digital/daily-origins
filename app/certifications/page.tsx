@@ -47,7 +47,7 @@ export default function CertificationsPage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {CERTS.map((cert, i) => (
               <Reveal key={cert.name} delay={i * 70}>
-                <div className="flex h-full gap-4 rounded-3xl border border-line bg-white p-7">
+                <div className="flex h-full gap-4 rounded-none border border-line bg-white p-7">
                   <CheckBadgeIcon className="h-8 w-8 flex-none text-ink" />
                   <div>
                     <h3 className="font-serif text-xl text-ink">

@@ -42,7 +42,7 @@ export function Subscription() {
           <Stagger className="space-y-5">
             {PERKS.map((perk) => (
               <StaggerItem key={perk.title}>
-                <div className="rounded-2xl border border-ivory/15 bg-ivory/5 p-6">
+                <div className="rounded-none border border-ivory/15 bg-ivory/5 p-6">
                   <h3 className="font-serif text-xl">{perk.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ivory/70">
                     {perk.body}

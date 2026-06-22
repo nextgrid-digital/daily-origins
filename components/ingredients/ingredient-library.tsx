@@ -84,7 +84,7 @@ export function IngredientLibrary({ items }: { items: LibraryItem[] }) {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[2rem] border border-line">
+              <div className="relative aspect-[5/4] w-full overflow-hidden rounded-none border border-line">
                 <Image
                   src={image}
                   alt={current.name}

@@ -97,7 +97,7 @@ export function RitualDetails({ handle }: { handle: string }) {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {REVIEWS.map((r, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <figure className="h-full rounded-3xl border border-line bg-white p-7">
+                <figure className="h-full rounded-none border border-line bg-white p-7">
                   <div aria-hidden style={{ color: lid }}>
                     {"\u2605\u2605\u2605\u2605\u2605"}
                   </div>

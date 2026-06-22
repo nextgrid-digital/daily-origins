@@ -31,7 +31,7 @@ export function Gallery({
 
   return (
     <form>
-      <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden rounded-2xl border border-sand-dark bg-sand">
+      <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden rounded-none border border-sand-dark bg-sand">
         {images[imageIndex] && (
           <Image
             className="h-full w-full object-cover"

@@ -139,14 +139,14 @@ export default function CheckoutPage() {
               </form>
 
               <aside className="order-1 lg:order-2">
-                <div className="rounded-2xl border border-sand-dark bg-white p-7">
+                <div className="rounded-none border border-sand-dark bg-white p-7">
                   <h2 className="text-lg font-medium tracking-tight text-ink">
                     Order summary
                   </h2>
                   <ul className="mt-6 space-y-5">
                     {lines.map((item, i) => (
                       <li key={i} className="flex gap-4">
-                        <div className="relative h-16 w-16 flex-none overflow-hidden rounded-xl border border-sand-dark bg-sand">
+                        <div className="relative h-16 w-16 flex-none overflow-hidden rounded-none border border-sand-dark bg-sand">
                           <Image
                             src={item.merchandise.product.featuredImage.url}
                             alt={item.merchandise.product.title}

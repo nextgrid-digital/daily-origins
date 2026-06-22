@@ -18,7 +18,7 @@ export function IngredientOrigins() {
     <section className="bg-stone/40 py-20 md:py-28">
       <Container className="grid items-center gap-14 lg:grid-cols-2">
         <Parallax distance={36} className="order-2 lg:order-1">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-line">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-none border border-line">
             <Image
               src={image}
               alt="Ingredient origins"

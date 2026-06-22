@@ -23,7 +23,12 @@ export function ProductDirectory({ products }: { products: Product[] }) {
   return (
     <section className="bg-white pb-24">
       <Container>
-        <div className="sticky top-[73px] z-20 -mx-6 mb-8 border-b border-line bg-white/85 px-6 py-4 backdrop-blur-md lg:-mx-10 lg:px-10">
+        <div
+          className={clsx(
+            "sticky top-[73px] z-20 mb-8 border-b border-line bg-white/85 py-4 backdrop-blur-md",
+            "-mx-6 px-6 lg:-mx-12 lg:px-12 xl:-mx-16 xl:px-16"
+          )}
+        >
           <div className="flex flex-wrap items-center gap-2">
             {TABS.map((tab) => (
               <button
@@ -42,7 +47,7 @@ export function ProductDirectory({ products }: { products: Product[] }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-2">
           {filtered.map((product, i) => (
             <ProductCard key={product.handle} product={product} priority={i < 6} />
           ))}

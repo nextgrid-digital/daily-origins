@@ -54,7 +54,7 @@ export default function DistributorsPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {REGIONS.map((region, i) => (
               <Reveal key={region.name} delay={i * 80}>
-                <div className="flex h-full flex-col rounded-3xl border border-line bg-white p-8">
+                <div className="flex h-full flex-col rounded-none border border-line bg-white p-8">
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="font-serif text-2xl text-ink">
                       {region.name}

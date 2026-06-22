@@ -39,7 +39,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <Parallax distance={36}>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-none border border-line">
                 <Image
                   src={ph({
                     title: "Our Philosophy",
@@ -104,7 +104,7 @@ export default function AboutPage() {
           <Stagger className="mt-14 grid gap-8 md:grid-cols-3">
             {VALUES.map((value, i) => (
               <StaggerItem key={value.title}>
-                <div className="h-full rounded-3xl border border-line bg-ivory-dim p-8">
+                <div className="h-full rounded-none border border-line bg-ivory-dim p-8">
                   <span className="font-serif text-3xl text-ink-soft/50">
                     0{i + 1}
                   </span>

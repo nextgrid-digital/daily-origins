@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import CartModal from "components/cart/modal";
+import { pagePadding } from "components/ui";
 import { getMenu } from "lib/shopify";
 import { Menu } from "lib/shopify/types";
 import Link from "next/link";
@@ -13,7 +15,7 @@ export async function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-ivory/85 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-10">
+      <nav className={clsx("flex w-full items-center justify-between gap-4 py-4", pagePadding)}>
         <div className="flex items-center gap-3 md:w-auto">
           <div className="block md:hidden">
             <Suspense fallback={null}>

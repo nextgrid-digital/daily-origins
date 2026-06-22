@@ -18,17 +18,17 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-line bg-ivory">
+    <section className="w-full border-b border-line bg-ivory">
       <Container className="py-20 md:py-28">
-        <FadeIn className="max-w-3xl">
+        <FadeIn>
           <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-ink-soft">
             {eyebrow}
           </span>
-          <h1 className="mt-5 font-serif text-5xl leading-[1.04] tracking-tight text-ink md:text-6xl">
+          <h1 className="mt-5 text-5xl font-semibold leading-[1.04] tracking-tight text-ink md:text-6xl">
             {title}
           </h1>
           {lede ? (
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
+            <p className="mt-6 text-lg leading-relaxed text-ink-soft">
               {lede}
             </p>
           ) : null}

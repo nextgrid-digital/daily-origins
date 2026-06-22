@@ -53,7 +53,7 @@ export default function GlobalShippingPage() {
             title="Lead times by region"
             lede="Typical retail delivery windows. Wholesale and bulk timelines are confirmed per order."
           />
-          <div className="mt-12 overflow-hidden rounded-3xl border border-line">
+          <div className="mt-12 overflow-hidden rounded-none border border-line">
             <table className="w-full text-left text-sm">
               <thead className="bg-ink text-ivory">
                 <tr>

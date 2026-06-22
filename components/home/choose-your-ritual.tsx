@@ -51,7 +51,7 @@ export function ChooseYourRitual() {
                 >
                   <div
                     className={clsx(
-                      "relative aspect-[3/4] overflow-hidden rounded-3xl border border-line",
+                      "relative aspect-[3/4] overflow-hidden rounded-none border border-line",
                       PANEL[family]
                     )}
                   >
