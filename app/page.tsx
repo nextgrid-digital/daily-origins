@@ -1,20 +1,21 @@
-import { Carousel } from "components/carousel";
-import { ThreeItemGrid } from "components/grid/three-items";
+import { Hero } from "components/home/hero";
+import { ProductDirectory } from "components/home/product-directory";
 import Footer from "components/layout/footer";
+import { getProducts } from "lib/shopify";
 
 export const metadata = {
   description:
-    "High-performance ecommerce store built with Next.js, Vercel, and Shopify.",
-  openGraph: {
-    type: "website",
-  },
+    "Daily Origins — a curated range of daily wellness rituals. Powerful natural ingredients, designed to fit into your everyday routine.",
+  openGraph: { type: "website" },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const products = await getProducts({});
+
   return (
     <>
-      <ThreeItemGrid />
-      <Carousel />
+      <Hero />
+      <ProductDirectory products={products} />
       <Footer />
     </>
   );

@@ -3,20 +3,97 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+/* -------------------------------------------------------------------------
+   Directory design system — clean, neutral, light. White base with soft gray
+   surfaces, near-black ink, hairline borders, and a single modern sans
+   (Inter) for both UI and headlines. Tokens flip the whole site at once.
+   Per-item accent colors are retained for small category dots only.
+-------------------------------------------------------------------------- */
+@theme {
+  /* Base */
+  --color-ivory: #ffffff;
+  --color-ivory-dim: #fafafa;
+  --color-stone: #f4f4f5;
+  --color-stone-dark: #e8e8ea;
+  --color-ink: #18181b;
+  --color-ink-soft: #71717a;
+  --color-line: #ececee;
+
+  /* Legacy aliases remapped to neutral so any leftover usage stays on-theme */
+  --color-forest: #18181b;
+  --color-forest-deep: #000000;
+  --color-forest-soft: #27272a;
+  --color-sand: #f4f4f5;
+  --color-sand-dark: #e8e8ea;
+  --color-gold: #18181b;
+  --color-gold-soft: #52525b;
+
+  /* Category accents (used for small dots / tags only) */
+  --color-energy: #c0531f;
+  --color-energy-soft: #e08a4f;
+  --color-focus: #1e3a5f;
+  --color-focus-soft: #4a6a91;
+  --color-recovery: #1a1a1a;
+  --color-recovery-soft: #4a4a4a;
+  --color-sleep: #9385b8;
+  --color-sleep-soft: #b6acd2;
+  --color-immunity: #2f5d3a;
+  --color-immunity-soft: #5c8a66;
+
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-line, currentColor);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-ivory);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Reveal fallback for SSR / no-JS — Framer Motion drives the real animation. */
+.reveal {
+  opacity: 1;
+  transform: none;
 }
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
@@ -27,6 +104,19 @@
 
 a,
 input,
-button {
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+button,
+textarea,
+select {
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ink/25 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

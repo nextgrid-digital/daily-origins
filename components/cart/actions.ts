@@ -104,3 +104,20 @@ export async function createCartAndSetCookie() {
   let cart = await createCart();
   (await cookies()).set("cartId", cart.id!);
 }
+
+export async function placeOrder() {
+  try {
+    const cart = await getCart();
+    if (cart && cart.lines.length) {
+      const lineIds = cart.lines
+        .map((line) => line.id)
+        .filter((id): id is string => Boolean(id));
+      if (lineIds.length) {
+        await removeFromCart(lineIds);
+      }
+    }
+    updateTag(TAGS.cart);
+  } catch (e) {
+    return "Error placing order";
+  }
+}

@@ -1,78 +1,102 @@
 import Link from "next/link";
 
-import FooterMenu from "components/layout/footer-menu";
-import LogoSquare from "components/logo-square";
-import { getMenu } from "lib/shopify";
-import { Suspense } from "react";
+import { NewsletterForm } from "components/ui/newsletter-form";
 
-const { COMPANY_NAME, SITE_NAME } = process.env;
+const { SITE_NAME } = process.env;
+
+const RITUAL_LINKS = [
+  { title: "Energy", path: "/search/energy" },
+  { title: "Focus", path: "/search/focus" },
+  { title: "Recovery", path: "/search/recovery" },
+  { title: "Sleep", path: "/search/sleep" },
+  { title: "Immunity", path: "/search/immunity" },
+];
+
+const COMPANY_LINKS = [
+  { title: "About", path: "/about" },
+  { title: "Ingredients", path: "/ingredients" },
+  { title: "Certifications", path: "/certifications" },
+  { title: "Contact", path: "/contact" },
+];
+
+const TRADE_LINKS = [
+  { title: "Wholesale", path: "/wholesale" },
+  { title: "Distributors", path: "/distributors" },
+  { title: "Global Shipping", path: "/global-shipping" },
+];
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
-  const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-  const skeleton =
-    "w-full h-6 animate-pulse rounded-sm bg-neutral-200 dark:bg-neutral-700";
-  const menu = await getMenu("next-js-frontend-footer-menu");
-  const copyrightName = COMPANY_NAME || SITE_NAME || "";
+  const name = SITE_NAME || "Daily Origins";
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 px-6 py-12 text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0 dark:border-neutral-700">
-        <div>
-          <Link
-            className="flex items-center gap-2 text-black md:pt-1 dark:text-white"
-            href="/"
-          >
-            <LogoSquare size="sm" />
-            <span className="uppercase">{SITE_NAME}</span>
-          </Link>
-        </div>
-        <Suspense
-          fallback={
-            <div className="flex h-[188px] w-[200px] flex-col gap-2">
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
+    <footer className="border-t border-line bg-ivory-dim text-ink">
+      <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+          <div>
+            <Link
+              href="/"
+              className="text-xl font-semibold tracking-tight text-ink"
+            >
+              {name}
+            </Link>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft">
+              Powerful ingredients. Purposeful daily rituals. Modern wellness,
+              designed for daily life.
+            </p>
+            <div className="mt-6 max-w-sm">
+              <NewsletterForm />
             </div>
-          }
-        >
-          <FooterMenu menu={menu} />
-        </Suspense>
-        <div className="md:ml-auto">
-          <a
-            className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
-            aria-label="Deploy on Vercel"
-            href="https://vercel.com/templates/next.js/nextjs-commerce"
-          >
-            <span className="px-3">▲</span>
-            <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
-            <span className="px-3">Deploy</span>
-          </a>
+            <p className="mt-3 text-xs text-ink-soft">
+              Join the ritual. No spam, ever.
+            </p>
+          </div>
+
+          <FooterColumn title="Rituals" links={RITUAL_LINKS} />
+          <FooterColumn title="Company" links={COMPANY_LINKS} />
+          <FooterColumn title="Trade" links={TRADE_LINKS} />
         </div>
       </div>
-      <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
+
+      <div className="border-t border-line">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-2 px-6 py-6 text-xs text-ink-soft md:flex-row md:justify-between lg:px-10">
           <p>
-            &copy; {copyrightDate} {copyrightName}
-            {copyrightName.length && !copyrightName.endsWith(".")
-              ? "."
-              : ""}{" "}
-            All rights reserved.
+            &copy; {currentYear} {name}. All rights reserved.
           </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>
-            <a href="https://github.com/vercel/commerce">View the source</a>
-          </p>
-          <p className="md:ml-auto">
-            <a href="https://vercel.com" className="text-black dark:text-white">
-              Created by ▲ Vercel
-            </a>
+          <p className="uppercase tracking-[0.18em]">
+            Powerful Ingredients · Purposeful Rituals
           </p>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { title: string; path: string }[];
+}) {
+  return (
+    <div>
+      <h3 className="text-xs uppercase tracking-[0.16em] text-ink-soft">
+        {title}
+      </h3>
+      <ul className="mt-5 space-y-3 text-sm">
+        {links.map((link) => (
+          <li key={link.title}>
+            <Link
+              href={link.path}
+              prefetch={true}
+              className="text-ink transition-colors hover:text-ink-soft"
+            >
+              {link.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

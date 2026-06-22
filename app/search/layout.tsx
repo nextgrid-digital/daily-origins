@@ -12,8 +12,23 @@ export default function SearchLayout({
 }) {
   return (
     <>
-      <div className="mx-auto flex max-w-(--breakpoint-2xl) flex-col gap-8 px-4 pb-4 text-black md:flex-row dark:text-white">
-        <div className="order-first w-full flex-none md:max-w-[125px]">
+      <section className="border-b border-sand-dark/50 bg-ivory">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+          <span className="text-xs uppercase tracking-[0.28em] text-gold">
+            The Collection
+          </span>
+          <h1 className="mt-4 font-serif text-4xl tracking-tight text-forest md:text-5xl">
+            Shop wellness
+          </h1>
+          <p className="mt-4 max-w-xl text-base text-ink-soft">
+            Considered tools for recovery, massage, sleep, and self-care —
+            sourced and certified for life's daily restoration.
+          </p>
+        </div>
+      </section>
+
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-12 text-ink md:flex-row lg:px-10">
+        <div className="order-first w-full flex-none md:max-w-[180px]">
           <Collections />
         </div>
         <div className="order-last min-h-screen w-full md:order-none">
@@ -21,7 +36,7 @@ export default function SearchLayout({
             <ChildrenWrapper>{children}</ChildrenWrapper>
           </Suspense>
         </div>
-        <div className="order-none flex-none md:order-last md:w-[125px]">
+        <div className="order-none flex-none md:order-last md:w-[160px]">
           <FilterList list={sorting} title="Sort by" />
         </div>
       </div>
